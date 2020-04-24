@@ -43,7 +43,11 @@ style.css
     create stylesheet
     change background color of the page
     change the font family and size
-    change the font and background color based on whether a task has been completed or not.     
+    change the font and background color based on whether a task has been completed or not.   
+
+database.sql
+    copy and paste create table
+    copy and paste rows
 
 Database in postico
     name database
