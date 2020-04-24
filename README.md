@@ -19,8 +19,7 @@ HTML -
     source in Jquery, JS files, bootstrap and jquery 
     set up input for the tasks
     make a button for add task
-    make a button for completed
-    make a button for delete
+    
 
 client.js
     set up click listeners    
@@ -28,6 +27,8 @@ client.js
     set up ajax GET request - getting info back from the database
     set up ajax DELETE request - deleting a task from the DOM and from the database
     set up ajax PUT request- for completed 
+    make a button for completed
+    make a button for delete
 
 server.js
     set up all the requires (express, body-parser, router.js files)
