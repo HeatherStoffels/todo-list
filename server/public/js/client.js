@@ -7,7 +7,7 @@ function onReady() {
   // add click listener for add task button
 
   $("#addTask").on("click", addTask);
-  $("#showAllTasks").on("click", ".toggleComplete", completed);
+  $("#showAllTasks").on("click", ".completeButton", completed);
   $("#showAllTasks").on("click", ".deleteButton", deleteTask);
 
   // run function that updates the dom and pulls current tasks
@@ -47,13 +47,13 @@ function getAllTasks() {
         if (responses[i].complete === true) {
           el.append(
             `<li><s>${responses[i].task}</s><button class="deleteButton" data-id="${responses[i].id}">Delete</button>
-                     <button class="toggleComplete" data-id="${responses[i].id}"
+                     <button class="completeButton" data-id="${responses[i].id}"
                      data-complete="${responses[i].complete}">Completed!</button></li>`
           );
         } else {
           el.append(
             `<li>${responses[i].task}<button class="deleteButton" data-id="${responses[i].id}">Delete</button>
-                     <button class="toggleComplete" data-id="${responses[i].id}"
+                     <button class="completeButton" data-id="${responses[i].id}"
                      data-complete="${responses[i].complete}">Complete</button></li>`
           );
         }
