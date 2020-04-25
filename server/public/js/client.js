@@ -46,7 +46,7 @@ function getAllTasks() {
       for (let i = 0; i < responses.length; i++) {
         if (responses[i].complete === true) {
           el.append(
-            `<li><s>${responses[i].task}</s><button class="deleteButton" data-id="${responses[i].id}">Delete</button>
+            `<li><span class="strikeThrough">${responses[i].task}</span><button class="deleteButton" data-id="${responses[i].id}">Delete</button>
                      <button class="completeButton" data-id="${responses[i].id}"
                      data-complete="${responses[i].complete}">Completed!</button></li>`
           );
@@ -92,7 +92,7 @@ function deleteTask() {
     url: `/todo/${id}`,
   })
     .then(function (response) {
-        console.log('back from DELETE with', response)
+      console.log("back from DELETE with", response);
       getAllTasks();
     })
     .catch(function (err) {
