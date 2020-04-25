@@ -54,7 +54,7 @@ function getAllTasks() {
           el.append(
             `<li>${responses[i].task}<button class="deleteButton" data-id="${responses[i].id}">Delete</button>
                      <button class="toggleComplete" data-id="${responses[i].id}"
-                     data-complete="${responses[i].complete}">Complete?</button></li>`
+                     data-complete="${responses[i].complete}">Complete</button></li>`
           );
         }
 
