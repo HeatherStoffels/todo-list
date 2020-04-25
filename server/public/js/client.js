@@ -7,7 +7,8 @@ function onReady() {
   // add click listener for add task button
 
   $("#addTask").on("click", addTask);
-  //   $(".toggleComplete").on("click", completed);
+  $("#showAllTasks").on("click", ".toggleComplete", completed);
+  $("#showAllTasks").on("click", ".deleteButton", deleteTask);
 
   // run function that updates the dom and pulls current tasks
   getAllTasks();
@@ -42,34 +43,23 @@ function getAllTasks() {
       console.log("getting all tasks");
       let el = $("#showAllTasks");
       el.empty();
-
-      responses.forEach((response) => {
-        //     // check for completeness (is the complete value true?)
-        if (response.complete) {
-          console.log("it's true");
-          console.log(response.id);
-
-          el.append(`<li><s>${response.task}</s><button class="deleteButton data-id="${response.id}">Delete</button>
-         </li>`);
-        } else {
-          console.log("this is false");
-          console.log(response.id);
+      for (let i = 0; i < responses.length; i++) {
+        if (responses[i].complete === true) {
           el.append(
-            `<li>${response.task}<button class="deleteButton data-id="${response.id}">Delete</button>
-         <button class="toggleComplete" id="button-${response.id}"
-         data-complete="${response.complete}">Complete</button></li>`
+            `<li><s>${responses[i].task}</s><button class="deleteButton" data-id="${responses[i].id}">Delete</button>
+                     <button class="toggleComplete" data-id="${responses[i].id}"
+                     data-complete="${responses[i].complete}">Completed!</button></li>`
           );
-          const buttonThatWasClicked = document.querySelector(
-            `#button-${response.id}`
+        } else {
+          el.append(
+            `<li>${responses[i].task}<button class="deleteButton" data-id="${responses[i].id}">Delete</button>
+                     <button class="toggleComplete" data-id="${responses[i].id}"
+                     data-complete="${responses[i].complete}">Complete?</button></li>`
           );
-          buttonThatWasClicked.addEventListener("click", () => {
-            console.log(`${response.id} was clicked`);
-          });
         }
-        //     // if complete
-        //     // render list normally
-        //     // else, redner the list item with red background or striketrough
-      });
+
+        $("#task").val("");
+      } //end for
     })
     .catch(function (err) {
       console.log("error getting tasks", err);
@@ -78,7 +68,6 @@ function getAllTasks() {
 }
 
 function completed() {
-  console.log("in completed function", $(this).id);
   const id = $(this).data("id");
 
   console.log(" in completed", id);
@@ -93,5 +82,20 @@ function completed() {
     })
     .catch(function (err) {
       console.log("error updating PUT ", err);
+    });
+}
+function deleteTask() {
+  console.log("in delete task client");
+  const id = $(this).data("id");
+  $.ajax({
+    type: "DELETE",
+    url: `/todo/${id}`,
+  })
+    .then(function (response) {
+        console.log('back from DELETE with', response)
+      getAllTasks();
+    })
+    .catch(function (err) {
+      console.log("problem with delete client side", err);
     });
 }

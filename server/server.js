@@ -63,3 +63,18 @@ app.put("/todo/:id", (req, res) => {
       res.sendStatus(500);
     });
 });
+
+app.delete("/todo/:id", (req, res) => {
+  console.log("in server side delete", req.params.id);
+  const query = `DELETE FROM "todo" WHERE id=$1;`;
+  const values = [req.params.id];
+  pool
+    .query(query, values)
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("error with sending back Delete on server side", err);
+      res.sendStatus(500);
+    });
+});
