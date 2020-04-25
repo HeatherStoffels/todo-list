@@ -5,8 +5,9 @@ $(document).ready(onReady);
 function onReady() {
   console.log("in onReady");
   // add click listener for add task button
+  
   $("#addTask").on("click", addTask);
-  $("#toggleComplete").on("click", completed);
+  $(".toggleComplete").on("click", completed);
 
   // run function that updates the dom and pulls current tasks
   getAllTasks();
@@ -48,8 +49,7 @@ function getAllTasks() {
         if (response.complete) {
           console.log("it's true");
           el.append(`<li><s>${response.task}</s><button class="deleteButton data-id="${response.id}">Delete</button>
-         <button class="toggleComplete" data-id="${response.id}"
-         data-complete="${response.complete}">Complete</button></li>`);
+         </li>`);
         } else {
           console.log("this is false");
           el.append(`<li>${response.task}<button class="deleteButton data-id="${response.id}">Delete</button>
@@ -68,13 +68,14 @@ function getAllTasks() {
 }
 
 function completed() {
+  console.log("in completed function");
   const id = $(this).data("id");
-  const completedTask = $(this).data("complete");
-  console.log(" in completed", id, completedTask);
+
+  console.log(" in completed", id);
   $.ajax({
     type: "PUT",
     url: `/todo/${id}`,
-    data: { complete: !completedTask },
+    data: { complete: true },
   })
     .then(function (response) {
       console.log("back from server side PUT", response);
