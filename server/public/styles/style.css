@@ -1,25 +1,14 @@
 body {
-  /* background-color: rgb(179, 236, 217); */
-  margin-left: 120px;
-  margin-top: 70px;
-  margin-right: 300px;
+    background-image: url(/images/notebookpaper.jpg); background-repeat: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 
-  background-image: url(/images/notebookpaper.jpg); background-repeat: no-repeat;
+  font-size: 1.3rem;
   font-family: "Raleway", sans-serif;
   font-family: "Indie Flower", cursive;
 }
-h1{
-    text-align: center;
-}
 .strikeThrough {
   text-decoration: line-through;
-}
-#task{
-    margin-left: 30px;
-}
-.completeButton{
-    float: right;
-}
-.deleteButton{
-
 }

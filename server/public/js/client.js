@@ -46,15 +46,31 @@ function getAllTasks() {
       for (let i = 0; i < responses.length; i++) {
         if (responses[i].complete === true) {
           el.append(
-            `<li><span class="strikeThrough">${responses[i].task}</span><button class="deleteButton" data-id="${responses[i].id}">Delete</button>
-                     <button class="completeButton" data-id="${responses[i].id}"
-                     data-complete="${responses[i].complete}">Completed!</button></li>`
+            `<div class="row mb-2">
+            <div class="col-8">
+              <span class="strikeThrough">${responses[i].task}</span>
+            </div>
+            <div class="col-2">
+              <button class="deleteButton btn btn-danger" data-id="${responses[i].id}"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="col-2">
+            </div>
+          </div>`
           );
         } else {
           el.append(
-            `<li>${responses[i].task}<button class="deleteButton" data-id="${responses[i].id}">Delete</button>
-                     <button class="completeButton" data-id="${responses[i].id}"
-                     data-complete="${responses[i].complete}">Complete</button></li>`
+            `<div class="row mb-2">
+            <div class="col-8">
+              ${responses[i].task}
+            </div>
+            <div class="col-2">
+              <button class="deleteButton btn btn-danger" data-id="${responses[i].id}"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="col-2">
+            <button class="completeButton btn btn-success" data-id="${responses[i].id}"
+                     data-complete="${responses[i].complete}"><i class="far fa-calendar-check"></i></button>
+            </div>
+          </div>`
           );
         }
 
