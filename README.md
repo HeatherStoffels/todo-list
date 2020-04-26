@@ -9,11 +9,16 @@ Your project description goes here. What problem did you solve? How did you solv
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
 
 
+This week I was tasked with making a dynamically created to-do list. This needed to allow users 
+to input a task, mark a task as completed and also delete a task. 
+
+
+
 set up files
     - index.html 
     - client.js
     - server.js
-    - todo.router.js
+ 
 
 HTML -
     source in Jquery, JS files, bootstrap and jquery 
@@ -26,7 +31,7 @@ client.js
     set up ajax POST request - for sending newly added tasks to the database
     set up ajax GET request - getting info back from the database
     set up ajax DELETE request - deleting a task from the DOM and from the database
-    set up ajax PUT request- for completed 
+    set up ajax PUT request- for completed database results
     make a button for completed
     make a button for delete
 
@@ -35,10 +40,6 @@ server.js
     set up port 5000
     start server
     make "start" shortcut in json
-
-router.js
-    set up requires
-    set up export at the bottom
 
 style.css
     create stylesheet
