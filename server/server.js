@@ -8,7 +8,7 @@ const Pool = pg.Pool;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: true,
+  //   ssl: true,
 });
 //   database: "weekend-to-do-app", //name of database
 //   host: "localhost", // where is database
