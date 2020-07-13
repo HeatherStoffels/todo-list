@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 5000;
+const port = process.env.PORT || 5000;
 const pg = require("pg");
 const Pool = pg.Pool;
 
