@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -6,12 +7,14 @@ const pg = require("pg");
 const Pool = pg.Pool;
 
 const pool = new Pool({
-  database: "weekend-to-do-app", //name of database
-  host: "localhost", // where is database
-  port: 5432, // always default port
-  max: 10, // number of connections
-  idleTimeoutMillis: 10000, // 10 second timeout.
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
 });
+//   database: "weekend-to-do-app", //name of database
+//   host: "localhost", // where is database
+//   port: 5432, // always default port
+//   max: 10, // number of connections
+//   idleTimeoutMillis: 10000, // 10 second timeout.
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("server/public"));
